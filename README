@@ -1,0 +1,80 @@
+## O `README.md` Final Otimizado
+
+```markdown
+# RAG Document Pipeline 
+
+Este é um pipeline modular de Geração Aumentada por Recuperação (RAG) desenvolvido em Python. Ele permite extrair textos de PDFs, imagens (via OCR) e URLs da web, indexá-los em um banco de dados vetorial local (FAISS) e fazer consultas em linguagem natural utilizando modelos de linguagem (LLMs) via API (Groq/Gemini) ou localmente (Ollama).
+
+O projeto foi otimizado para rodar de forma leve e eficiente em ambientes com recursos limitados de hardware.
+
+## Tecnologias Utilizadas
+
+- **Framework RAG:** LangChain
+- **Banco Vetorial:** FAISS (`faiss-cpu`)
+- **Processamento de Embeddings:** HuggingFace (`all-MiniLM-L6-v2`)
+- **Extração de Texto & OCR:** PyMuPDF, EasyOCR e BeautifulSoup4
+- **Provedores de LLM:** Groq (Llama 3.3), Google Gemini, Ollama (Llama 3.2 local)
+
+## Estrutura do Projeto
+
+```text
+├── src/
+│   ├── extraction.py  # Captura e limpeza de texto (PDF, Imagem, URL)
+│   ├── indexing.py    # Chunking e geração do índice vetorial FAISS
+│   ├── retrieval.py   # Busca semântica e interface com as LLMs
+│   └── utils.py       # Configurações de logging e detecção de hardware (CPU/GPU)
+├── .env.example       # Modelo de configuração de variáveis de ambiente
+├── .gitignore         # Arquivos ignorados pelo Git
+├── main.py            # Maestro da aplicação (Interface de Linha de Comando)
+└── requirements.txt   # Dependências do projeto
+```
+
+## Instalação
+
+### Com ambiente virtual (recomendado):
+```bash
+python3 -m venv .venv
+source .venv/bin/activate  # Linux/Mac
+.venv\Scripts\activate     # Windows
+pip install -r requirements.txt
+```
+
+### Sem ambiente virtual:
+```bash 
+pip install -r requirements.txt
+```
+
+## Como Usar
+
+### Indexar documentos
+Coloque seus arquivos na pasta `docs/` e passe apenas o nome do arquivo, ou passe o caminho completo do arquivo de qualquer lugar do seu dispositivo ou informe as URLs desejadas:
+
+```bash
+python main.py index --files relatorio.pdf
+python main.py index --urls https://exemplo.com/artigo
+```
+
+### Fazer perguntas
+```bash
+# Usa o provedor configurado no .env
+python main.py ask "O que está descrito no relatório?"
+
+# Ou escolha o provedor na hora
+python main.py ask "O que está descrito no relatório?" --provider gemini
+```
+
+---
+
+## Exemplo de Uso
+
+**Comando enviado no terminal:**
+```bash
+python main.py ask "O que está descrito no relatório?"
+```
+
+**Resposta gerada pelo pipeline:**
+```text
+O relatório descreve as atividades desenvolvidas durante o estágio no mês de junho de 2026, que focaram no desenvolvimento de um sistema inteligente de monitoramento acústico para identificar estados de estresse em colmeias de abelhas...
+
+Fontes: Relatório Mensal de Atividades (junho).docx.pdf
+Provedor: groq

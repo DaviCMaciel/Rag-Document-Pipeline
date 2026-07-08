@@ -11,7 +11,6 @@ import easyocr
 from src.utils import get_device
 
 logger = logging.getLogger(__name__)
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 class Document_Reader():
     def __init__(self):

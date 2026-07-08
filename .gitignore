@@ -1,0 +1,22 @@
+# Ambiente e credenciais
+.env
+.venv/
+env/
+
+# Dados e índices gerados
+docs/
+faiss_index/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VSCode
+.vscode/
+
+# Sistema
+.DS_Store

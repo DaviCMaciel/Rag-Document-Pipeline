@@ -4,7 +4,7 @@ import torch
 from src.utils import get_device
 from typing import List, Dict, Any
 from langchain_community.vectorstores import FAISS
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
@@ -106,4 +106,4 @@ class Content_Retriever:
             "response": response,
             "sources": sources,
             "provider": self.provider
-        }
+        } 

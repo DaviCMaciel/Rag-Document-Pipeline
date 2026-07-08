@@ -1,0 +1,17 @@
+torch
+langchain
+langchain-community
+langchain-core
+langchain-text-splitters
+faiss-cpu
+langchain-groq
+langchain-google-genai
+requests
+beautifulsoup4
+pymupdf
+pillow
+numpy
+easyocr
+python-dotenv
+sentence-transformers
+langchain-huggingface

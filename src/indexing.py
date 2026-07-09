@@ -1,7 +1,6 @@
 from src.utils import get_device
 import logging
 from typing import List, Dict, Any
-import torch
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS

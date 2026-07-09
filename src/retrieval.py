@@ -1,6 +1,5 @@
 import os
 import logging
-import torch
 from src.utils import get_device
 from typing import List, Dict, Any
 from langchain_community.vectorstores import FAISS
